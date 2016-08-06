@@ -61,6 +61,7 @@ public class SwordRankup extends JavaPlugin{
         config.options().copyDefaults(true);
         saveConfig();
         Bukkit.getServer().getPluginManager().registerEvents(new DeathListener(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new DamageListener(), this);
         this.getCommand("givesword").setExecutor(new SwordCommands());
     }
 }
