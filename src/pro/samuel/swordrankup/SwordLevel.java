@@ -85,6 +85,8 @@ public class SwordLevel {
                 lore.add(ChatColor.translateAlternateColorCodes('&', "&b+1 Life Steal"));
             }
         }
+        meta.setLore(lore);
+        item.setItemMeta(meta);
     }
     public static void UpdateSwordItem(ItemStack item, int i, int nextLine, int level, int progress, int next) {
         final ItemMeta meta = item.getItemMeta();
