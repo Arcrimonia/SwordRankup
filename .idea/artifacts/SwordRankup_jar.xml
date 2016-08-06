@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="SwordRankup:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/SwordRankup_jar</output-path>
+    <root id="archive" name="SwordRankup.jar">
+      <element id="module-output" name="SwordRankup" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,13 @@
+name: SwordRankup
+version: 1.0.0
+description: Rank up your sword by killing mobs and players.
+author: Arcrimonia
+main: pro.samuel.swordrankup.SwordRankup
+commands:
+  givesword:
+    description: Give a rankup sword
+    aliases: [gs]
+    permission: swordrankup.givesword
+permissions:
+  swordrankup.givesword:
+    description: Permission to give rankup swords.
