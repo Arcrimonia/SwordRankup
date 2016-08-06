@@ -35,12 +35,14 @@ public class SwordLevel {
                         int leftOverXP = updatedXP - finalXP;
                         int nextXP = nextLevel * 100;
                         if (leftOverXP < nextXP) {
+                            AddSwordUpgrade(item, nextLevel);
                             UpdateSwordItem(item, i, nextLine, nextLevel, leftOverXP, nextXP);
                             break;
                         } else {
                             while (leftOverXP > nextXP) {
                                 nextXP = nextLevel * 100;
                                 leftOverXP = leftOverXP - nextXP;
+                                AddSwordUpgrade(item, nextLevel);
                                 nextLevel = nextLevel++;
                             }
                             UpdateSwordItem(item, i, nextLine, nextLevel, leftOverXP, nextXP);
@@ -55,7 +57,7 @@ public class SwordLevel {
 
         }
     }
-    public static void UpdateSwordItem(ItemStack item, int i, int nextLine, int level, int progress, int next) {
+    public static void AddSwordUpgrade(ItemStack item, int level) {
         final ItemMeta meta = item.getItemMeta();
         List<String> lore = meta.getLore();
         if (level % 5==0 && !(level % 10==0)) {
@@ -68,7 +70,7 @@ public class SwordLevel {
                     }
                 }
             } else {
-                lore.add(ChatColor.translateAlternateColorCodes('&', "&9+1 +Damage"));
+                lore.add(ChatColor.translateAlternateColorCodes('&', "&9+1 Damage"));
             }
         } else if (level % 10==0) {
             if (lore.contains("Life Steal")) {
@@ -80,9 +82,13 @@ public class SwordLevel {
                     }
                 }
             } else {
-                lore.add(ChatColor.translateAlternateColorCodes('&', "&b+1 +Life Steal"));
+                lore.add(ChatColor.translateAlternateColorCodes('&', "&b+1 Life Steal"));
             }
         }
+    }
+    public static void UpdateSwordItem(ItemStack item, int i, int nextLine, int level, int progress, int next) {
+        final ItemMeta meta = item.getItemMeta();
+        List<String> lore = meta.getLore();
         lore.set(i, ChatColor.translateAlternateColorCodes('&', "&7Level " + level));
         lore.set(nextLine, ChatColor.translateAlternateColorCodes('&', "&7Progress " + progress + "/" + next));
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&2Level&a " + level + " &2[&a" + progress + "&2/&a" + next + "&2]"));
