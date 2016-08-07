@@ -33,7 +33,7 @@ public class SwordCommands implements CommandExecutor {
                     lore.add(ChatColor.translateAlternateColorCodes('&', "&7Level 1"));
                     lore.add(ChatColor.translateAlternateColorCodes('&', "&7Progress 0/100"));
                     metadata.setLore(lore);
-                    if (config.getBoolean("sword-level-in-name") == true) {
+                    if (config.getBoolean("sword-level-in-name")) {
                         if (!args[2].isEmpty()) {
                             metadata.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&2Diamond Sword Level &a1 &2[&a0&2/&a100&2]"));
                         } else {
