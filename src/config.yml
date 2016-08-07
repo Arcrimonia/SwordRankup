@@ -1,0 +1,37 @@
+mobs:
+  bat: 5
+  blaze: 12
+  cave_spider: 8
+  chicken: 4
+  cow: 5
+  creeper: 14
+  ender_dragon: 650
+  enderman: 25
+  endermite: 9
+  ghast: 15
+  giant: 125
+  guardian: 16
+  horse: 5
+  iron_golem: 20
+  magma_cube: 7
+  mushroom_cow: 5
+  ocelot: 4
+  pig: 5
+  pig_zombie: 14
+  polar_bear: 12
+  player: 100
+  rabbit: 4
+  sheep: 5
+  shulker: 10
+  silverfish: 8
+  skeleton: 12
+  slime: 6
+  snowman: 5
+  spider: 8
+  squid: 5
+  villager: 5
+  witch: 15
+  wither: 450
+  zombie: 13
+
+sword-level-in-name: true

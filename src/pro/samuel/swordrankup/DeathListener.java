@@ -1,6 +1,5 @@
 package pro.samuel.swordrankup;
 
-import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
@@ -15,6 +14,9 @@ import org.bukkit.inventory.PlayerInventory;
  * Created by Sam on 8/5/2016.
  */
 public class DeathListener implements Listener {
+
+    FileConfiguration config = SwordRankup.getPlugin(SwordRankup.class).getConfig();
+
     @EventHandler
     public void onEntityDeathEvent(EntityDeathEvent event) {
         final LivingEntity victim = event.getEntity();
@@ -24,9 +26,7 @@ public class DeathListener implements Listener {
             PlayerInventory inv = killer.getInventory();
             if(inv.getItemInMainHand().getType().toString().toLowerCase().contains("sword") && inv.getItemInMainHand().getItemMeta().getLore().toString().contains("Level")) {
                 EntityType type = victim.getType();
-                FileConfiguration config = SwordRankup.getPlugin(SwordRankup.class).getConfig();
-                Bukkit.getConsoleSender().sendMessage("mobs." + type.toString());
-                Bukkit.getConsoleSender().sendMessage(Integer.toString(config.getInt("mobs." + type.toString())));
+
                 SwordLevel.AddSwordXP(config.getInt("mobs." + type.toString().toLowerCase()), killer);
             }
         }
