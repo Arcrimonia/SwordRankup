@@ -26,8 +26,7 @@ public class DeathListener implements Listener {
             PlayerInventory inv = killer.getInventory();
             if(inv.getItemInMainHand().getType().toString().toLowerCase().contains("sword") && inv.getItemInMainHand().getItemMeta().getLore().toString().contains("Level")) {
                 EntityType type = victim.getType();
-
-                SwordLevel.AddSwordXP(config.getInt("mobs." + type.toString().toLowerCase()), killer);
+                new SwordManager(config.getInt("mobs." + type.toString().toLowerCase()), killer);
             }
         }
     }

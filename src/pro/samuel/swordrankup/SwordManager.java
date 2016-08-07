@@ -11,13 +11,24 @@ import java.util.List;
 /**
  * Created by Sam on 8/5/2016.
  */
-public class SwordLevel {
+public class SwordManager {
 
-    public static void addSwordXP(int XP, Player player) {
+    private int XP = 0;
+    private Player player = null;
+    private ItemMeta meta = null;
+    private ItemStack item = null;
 
-        final ItemStack item = player.getInventory().getItemInMainHand();
-        final ItemMeta meta = item.getItemMeta();
+    public SwordManager(int XP, Player player) {
 
+        this.item = player.getInventory().getItemInMainHand();
+        this.meta = item.getItemMeta();
+        this.XP = XP;
+        this.player = player;
+        addSwordXP();
+
+    }
+
+    public void addSwordXP() {
         if (meta.hasLore()) {
             List<String> lore = meta.getLore();
             for (int i = 0; i < lore.size(); i = i++) {
@@ -38,7 +49,7 @@ public class SwordLevel {
                         int nextXP = nextLevel * 100;
                         if (leftOverXP < nextXP) {
                             addSwordUpgrade(item, nextLevel);
-                            updateSwordItem(item, i, nextLine, nextLevel, leftOverXP, nextXP);
+                            updateSword(item, i, nextLine, nextLevel, leftOverXP, nextXP);
                             break;
                         } else {
                             while (leftOverXP > nextXP) {
@@ -47,11 +58,11 @@ public class SwordLevel {
                                 addSwordUpgrade(item, nextLevel);
                                 nextLevel = nextLevel++;
                             }
-                            updateSwordItem(item, i, nextLine, nextLevel, leftOverXP, nextXP);
+                            updateSword(item, i, nextLine, nextLevel, leftOverXP, nextXP);
                             break;
                         }
                     } else {
-                        updateSwordItem(item, i, nextLine, level, updatedXP, level * 100);
+                        updateSword(item, i, nextLine, level, updatedXP, level * 100);
                         break;
                     }
                 }
@@ -60,7 +71,7 @@ public class SwordLevel {
         }
     }
 
-    public static void addSwordUpgrade(ItemStack item, int level) {
+    public void addSwordUpgrade(ItemStack item, int level) {
 
         final ItemMeta meta = item.getItemMeta();
 
@@ -94,7 +105,7 @@ public class SwordLevel {
         item.setItemMeta(meta);
     }
 
-    public static void updateSwordItem(ItemStack item, int i, int nextLine, int level, int progress, int next) {
+    public void updateSword(ItemStack item, int i, int nextLine, int level, int progress, int next) {
 
         final ItemMeta meta = item.getItemMeta();
 
